@@ -6,8 +6,13 @@ function setup() {
 }
 
 function draw() {
-  background(0)
+  background(50,205,255)
 
+  stroke(0)
+  strokeWeight(50)
+  point(400,400)
+  point(400,200)
+  point(150,300)
 
   let p1 = { x: 150, y: 350 }
   let p2 = { x: 150, y: 50 }
@@ -17,15 +22,14 @@ function draw() {
   stroke(255,0,0)
   point(400, 400)
 
-  noFill()
+  fill(255,255,10)
   stroke(255)
   strokeWeight(5)
   beginShape()
-  vertex(0, 300)
-  bezierVertex(p2.x,p2.y,400,400,width,300)
-  bezierVertex(p2.x,p2.y,400,400,width,300)
+  vertex(0, 600)
+  bezierVertex(200,0,400,0,600,600)
+  //bezierVertex(p2.x,p2.y,400,400,width,300)
   endShape()
-  fill(255)
   textSize(300)
   text("c1: " + mouseX)
   console.log("width: " + windowWidth)

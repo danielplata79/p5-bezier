@@ -2,10 +2,11 @@
 // Code created by Daniel Plata.
 
 function setup() {
-  createCanvas(600,600)
+  createCanvas(600,600,WEBGL)
 }
 
 function draw() {
+  orbitControl()
   background(50,205,255)
 
   stroke(0)
@@ -26,7 +27,7 @@ function draw() {
   stroke(255)
   strokeWeight(5)
   beginShape()
-  vertex(0, 600)
+    vertex(0, 300)
   bezierVertex(200,0,400,0,600,600)
   //bezierVertex(p2.x,p2.y,400,400,width,300)
   endShape()

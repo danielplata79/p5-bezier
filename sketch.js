@@ -7,9 +7,9 @@ function setup() {
 
 function draw() {
   orbitControl()
-  background(50,205,255)
+  background(0)
 
-  stroke(0)
+  stroke('blue')
   strokeWeight(50)
   point(400,400)
   point(400,200)
@@ -20,7 +20,17 @@ function draw() {
   let p3 = { x: 400, y: 50 }
   let p4 = { x: 500, y: 350 }
 
-  stroke(255,0,0)
+  fill('red')
+  rotateX(frameCount * 0.01)
+  rotateY(frameCount * 0.01)
+  noStroke()
+  beginShape()
+  vertex(400,400,[500])
+  vertex(400,200,[500])
+  vertex(150,300,[500])
+  endShape()
+
+  /* stroke(255,0,0)
   point(400, 400)
 
   fill(255,255,10)
@@ -29,11 +39,11 @@ function draw() {
   beginShape()
     vertex(0, 300)
   bezierVertex(200,0,400,0,600,600)
-  //bezierVertex(p2.x,p2.y,400,400,width,300)
+  bezierVertex(200,0,400,0,600,600)
   endShape()
   textSize(300)
   text("c1: " + mouseX)
-  console.log("width: " + windowWidth)
+  console.log("width: " + windowWidth) */
 }
 
 /*

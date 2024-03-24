@@ -2,21 +2,38 @@
 // Code created by Daniel Plata.
 
 function setup() {
-  createCanvas(700,700)
-  background(0)
+  createCanvas(600,600)
 }
 
 function draw() {
-  translate(height/2,width/2)
+  background(0)
+
+
+  let p1 = { x: 150, y: 350 }
+  let p2 = { x: 150, y: 50 }
+  let p3 = { x: 400, y: 50 }
+  let p4 = { x: 500, y: 350 }
+
+  stroke(255,0,0)
+  point(400, 400)
+
+  noFill()
+  stroke(255)
+  strokeWeight(5)
   beginShape()
-  vertex(70,20)
-  bezierVertex(80,0,80,75,30,75)
+  vertex(0, 300)
+  bezierVertex(p2.x,p2.y,400,400,width,300)
+  bezierVertex(p2.x,p2.y,400,400,width,300)
   endShape()
+  fill(255)
+  textSize(300)
+  text("c1: " + mouseX)
+  console.log("width: " + windowWidth)
 }
 
-// bezierVertex( x2, y2, x3, y3, x4, y4 )
-
 /*
+  bezierVertex( x2, y2, x3, y3, x4, y4 )
+
   let p1 = { x: 50, y: 150 }; 
   
   // First Control Point 

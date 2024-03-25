@@ -21,7 +21,7 @@ function draw() {
   let p4 = { x: 500, y: 350 }
 
   fill('red')
-  rotateX(frameCount * 0.01)
+  rotateX(frameCount * 0.05)
   rotateY(frameCount * 0.01)
   noStroke()
   beginShape()

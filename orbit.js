@@ -1,4 +1,6 @@
+//
 // Docs at https://www.geeksforgeeks.org/p5-js-orbitcontrol-function/
+//
 
 let newFont;
 let orbitControlEnable = false;
@@ -41,5 +43,8 @@ function draw() {
 
     orbitControl(xSensivity,ySensivity,zSensivity)
  
+	for (i = 0;i < 10; i++) {
+		sphere(50)		
+	}
     box(50)
 }

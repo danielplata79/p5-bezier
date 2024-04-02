@@ -10,7 +10,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(600,600,WEBGL)
+    createCanvas(windowWidth,windowHeight,WEBGL)
     textFont(newFont, 18)
 
     xSensivitySlider = createSlider(0, 5, 1, 0.1)
@@ -46,5 +46,5 @@ function draw() {
 	for (i = 0;i < 10; i++) {
 		sphere(50)		
 	}
-    box(50)
+    box(10)
 }

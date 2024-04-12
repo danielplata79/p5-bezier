@@ -1,28 +1,47 @@
+  // to set the light position,
+  // think of the world's coordinate as:
+  // -width/2,-height/2 ----------- width/2,-height/2
+  //                   |           |
+  //                   |    0,0    |
+  //                   |           |
+  //  -width/2,height/2 ----------- width/2,height/
 let newFont;
 let currentLightColor = "red";
 let currentAmbientColor = "red";
 
 function preload() {
     newFont = loadFont('assets/JetBrains Mono Regular Nerd Font Complete Mono.ttf')
+	textureEarth = loadImage("./earth2.jpg")
+	textureMoon = loadImage("./moon.jpg")
 }
 
 function setup() {
 	createCanvas(windowWidth,windowHeight,WEBGL)
 
-	 graySlider = createSlider(0, 128, 64, 1); 
-	 graySlider.position(20, 50); 
+	// graySlider = createSlider(0, 128, 64, 1); 
+	// graySlider.position(20, 50); 
 }
 
 function draw() {
 	noStroke()
-	fill(255,0,0,210)
+	
 	orbitControl()
 	background(0)
 
-	shininess(15)
-	pointLight(0, 0, 255, -width / 2, -height / 2, 250)
-	grayValue = graySlider.value()
-	ambientLight(grayValue, 0, 0)
-	specularMaterial(250)
-	sphere(100)	
+	// ambientLight()
+	shininess(80)
+	pointLight(255, 255, 255, mouseX - width/2, mouseY - height/2, 300 )
+	ambientLight(200, 200, 200)
+	rotateY(millis() / 2000)
+	texture(textureEarth)
+	sphere(250)		
+
+	//translate(-width/2, -height/2)
+	translate(1000,0)
+	fill(200,200,200)
+	pointLight(250,250,255, 0,0, 500)
+	ambientLight(0,0,0)
+	texture(textureMoon)
+	rotateY(millis() / 1800)
+	sphere(50)
 }

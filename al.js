@@ -33,7 +33,9 @@ function draw() {
 	pointLight(255, 255, 255, mouseX - width/2, mouseY - height/2, 300 )
 	ambientLight(200, 200, 200)
 	rotateY(millis() / 2000)
+	//normalMaterial()
 	texture(textureEarth)
+	torus(80,20,64,64)
 	sphere(250)		
 
 	//translate(-width/2, -height/2)

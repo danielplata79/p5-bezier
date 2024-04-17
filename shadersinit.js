@@ -1,7 +1,7 @@
 let theShader;
 
 function preload(
-	theShader = loadShader('shader.vert',)
+	theShader = loadShader('shader.vert', 'shader.frag')
 )
 
 function setup(

@@ -1,6 +1,5 @@
-var xoff1 = 0
-var xoff2 = 10000
-//var yoff = 0
+var inc = 0.01
+var start = 0
 
 function setup() {
 	createCanvas(windowWidth,windowHeight)
@@ -8,20 +7,31 @@ function setup() {
 
 function draw() {
 	background(0)
-	fill(255)
+	noFill()
+
+	// Using random() instead of noise()
+	//
+	//beginShape()
+	//for( var x = 0; x < width; x++ ) {
+	//	stroke(255)
+	//	vertex(x, random(height))
+	//}
+	//endShape()
 	
-	//var x = random(100)
-	//var x = noise(100)	
+	beginShape()
+	var xoff = start
+	for(var x = 0; x < width; x++) {
+		stroke(255)
+		//var y = random(height)
+		var y = noise(xoff) * height
+		//var y = sin(xoff) * height
+		vertex(x,y)
+
+		xoff += inc
+	}
+	endShape()
 	
-	var x = map(noise(xoff1),0,1,0,width)
-	var y = map(noise(xoff2),0,1,0,height)
-
-	xoff1 += 0.02
-	xoff2 += 0.02
-	//yoff += 0.01
-
-	console.log("xoff1: " + xoff1)
-	console.log("xoff2: " + xoff2)
-
-	ellipse(x,y, 24,24)
+	start += inc
+	
+	//noLoop()
 }

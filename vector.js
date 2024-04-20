@@ -12,7 +12,7 @@ function setup() {
     background(0)
 }
 function draw() {
-    stroke(0,255,0,100)
+	stroke(rR,g,b,255)
     strokeWeight(2)
     point(x,y)   
     const r = floor(random(4))
@@ -41,6 +41,30 @@ function draw() {
         y = height / 2
         stroke(255,0,0,100)
     }
-    console.log("x: " + x)
-    console.log("y: " + y)
+    //console.log("x: " + x)
+    //console.log("y: " + y)
+}
+
+function mouseClicked() {
+	const touch = floor(random(3));
+	
+	switch(touch) {
+		case 0:
+			rR=255
+			g=0
+			b=0
+		break;
+		case 1:
+			rR=0
+			g=255
+			b=0
+		break;
+		case 2:
+			rR=0
+			g=0
+			b=255
+		break;
+	}
+
+	console.log("touch: "+touch)
 }

@@ -43,6 +43,15 @@ function draw() {
     }
     //console.log("x: " + x)
     //console.log("y: " + y)
+	const touch = floor(random(1));
+	
+	switch(touch) {
+		case 0:
+			rR=0
+			g=random(255)
+			b=random(100)
+		break;
+	}
 }
 
 function mouseClicked() {
@@ -50,9 +59,9 @@ function mouseClicked() {
 	
 	switch(touch) {
 		case 0:
-			rR=255
+			rR=random(255)
 			g=0
-			b=0
+			b=random(255)
 		break;
 		case 1:
 			rR=0

@@ -1,36 +1,74 @@
-var inc = 0.009;
-var start = 0;
-var gen;
+// Created by Daniel Plata
+//
+// https://github.com/danielplata79
+
+var num = 1000;
+var noiseScale = 500, noiseStrength= 1;
+var particles =[num];
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	pixelDensity(1);
-	noiseDetail(5);
+	noStroke();
 	
-	noiseInc = createSlider(0.01,0.50,0.01,0);
-	noiseInc.position(width/2,height - 50);
-	noiseInc.size(80)
-}
+	for(let x = 0; x < num ; x++) {
+		var y = createVector(random(width*1.2), random(height), 2);
+		var angle = 0;
+		var dir = createVector(cos(angle), sin(angle));
+		var speed = random(0.5, 2);
+
+		particles[x] = new Particle(y, dir, speed);
+	};
+};
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+};
 
 function draw() {
-	gen = noiseInc.value();
-	var yoff = start;
+	//background("#24242a");
+	fill(0,10);
+	noStroke();
+	rect(0,0, width, height);
+	
+	for(let i = 0; i < particles.length; i++) {
+		particles[i].run();
+	};
+};
 
-	loadPixels();
-	for (var x = 0; x < width; x++) {
-		var xoff = start;
-		for (var y = 0; y < height; y++ ) {
-			var index = (x + y * width) * 4;
-			var r = noise(xoff,yoff) * 255;
-			pixels[index + 0] = 20;
-			pixels[index + 1] = r;
-			pixels[index + 2] = r;
-			pixels[index + 3] = 255;
-			
-			xoff += inc;
-		}
-		yoff += inc;
-	}
-	updatePixels();
-	start += gen;
-}
+class Particle {
+	constructor(_y, _dir, _speed){
+		this.y = _y;
+		this.dir = _dir;
+		this.speed = _speed;
+	};
+
+	run() {
+		this.move();
+		this.checkEdges();
+		this.update();
+	};
+
+	move() {
+		let angle = noise(this.y.x/noiseScale, this.y.y/noiseScale, frameCount/noiseScale) * TWO_PI * noiseStrength;
+		this.dir.x = cos(angle);
+		this.dir.y = sin(angle);
+		var vel = this.dir.copy();
+		var d = 1;
+		vel.mult(this.speed * d);
+		this.y.add(vel);
+	};
+
+		checkEdges() {
+			if(this.y.x < 0 || this.y.x > width || this.y.x < 0 || this.y.y > height) {
+				this.y.x = random(width * 1.2);
+				this.y.y = random(height);
+			};
+		};
+
+		update() {
+			fill(255, 0,0,random(255));
+			ellipse(this.y.x, this.y.y, this.y.z);
+		};
+};
+
+

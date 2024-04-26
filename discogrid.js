@@ -4,28 +4,28 @@ let xoff = 0; let yoff = 0; let inc = 0.1;
 let zoff = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  rectMode(CENTER);
-  cols = width/size;
-  rows = height/size;
-  
+	createCanvas(windowWidth, windowHeight);
+	rectMode(CENTER);
+	cols = width/size;
+	rows = height/size;
 }
 
 function draw() {
-  background(0,200,50,250);
-  xoff = 0;
-  for (let i=0; i<cols; i++){
-    sizes[i] = [];
-    yoff = 0;
-    for (let j=0; j<rows; j++){
-      sizes[i][j] = map(noise(xoff, yoff, zoff), 0, 1, 0, size*2.2);
-      yoff += inc;
-      
-      fill(220, 255, 100, 250);
-      noStroke();
-      rect(size/2 + i*size, size/2 + j*size, sizes[i][j], sizes[i][j]);
-    }
-    xoff += inc;
-    zoff += 0.0003;
-  }  
+	background (0, 200, 50, 250);
+	xoff = 0;
+	for(let i=0; i<cols; i++) {
+		sizes[i] = [];
+		yoff = 0;
+		for(let j=0; j<rows; j++) {
+			sizes[i][j] = map(noise(xoff, yoff, zoff), 0,1,0,size*1.9);
+			yoff += inc;
+
+			fill(200, 255, 100, 250);
+			noStroke();
+			rect(size/2 + i*size, size/2 + j*size, sizes[i][j], sizes[i][j]);
+		}
+
+		xoff += inc;
+		zoff += 0.0008;
+	}
 }

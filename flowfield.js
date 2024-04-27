@@ -9,9 +9,10 @@ var particles =[num];
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	noStroke();
+	background(0);
 	
 	for(let x = 0; x < num ; x++) {
-		var y = createVector(random(width*1.2), random(height), 2);
+		var y = createVector(random(width*1.2), random(height), random(4));
 		var angle = 0;
 		var dir = createVector(cos(angle), sin(angle));
 		var speed = random(0.5, 2);
@@ -25,7 +26,7 @@ function windowResized() {
 };
 
 function draw() {
-	//background("#24242a");
+	//background(20);
 	fill(0,10);
 	noStroke();
 	rect(0,0, width, height);

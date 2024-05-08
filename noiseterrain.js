@@ -22,9 +22,9 @@ function draw() {
 	for(var y = 0; y<rows; y++) {
 	beginShape(TRIANGLE_STRIP);
 		for(var x = 0; x<cols; x++) {
-			stroke(255);
-			noFill();
-			rect(x*scl, y*scl, scl, scl);
+			vertex(x*scl, y*scl);
+			vertex(x*scl, (y+1)*scl);
+			//rect(x*scl, y*scl, scl, scl);
 		}
 	endShape();
 	}

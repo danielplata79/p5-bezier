@@ -36,15 +36,15 @@ function draw() {
 	translate(width/2, height/2);
 	rotateX(PI/3);
 	
-	frameRate(1);
+	frameRate(60);
 	
 	translate(-w/1.3, -h);
 
 	for(var y = 0; y<rows-1; y++) {
 	beginShape(TRIANGLE_STRIP);
 		for(var x = 0; x<cols; x++) {
-			vertex(x*scalar, y*scalar, random(-100,100));
-			vertex(x*scalar, (y+1)*scalar, random(-100,100));
+			vertex(x*scalar, y*scalar, random(-10,10));
+			vertex(x*scalar, (y+1)*scalar, random(-10,10));
 		}
 	endShape();
 	}

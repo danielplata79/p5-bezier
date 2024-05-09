@@ -9,23 +9,24 @@ var cols,rows;
 var scalar = 20;
 var w,h;
 
+w = 600;
+h = 500;
+
 //float[][] terrain;
 var landscape = [];
 
 function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	
-	w = windowWidth;
-	h = windowHeight;
-	cols = (w/1.5)/scalar;
-	rows = (h/1.5)/scalar;
+	cols = (w/1)/scalar;
+	rows = (h/1.3)/scalar;
 	
-	//landscape = [cols][rows];
-	//for(var y = 0; y < rows; y++) {
-	//	for(var x = 0; x < cols; x++) {
-	//		landscape[x][y] = random(-10, 10);
-	//	}
-	//}
+	for(var x = 0; x < cols; x++) {
+		landscape[x] = [];
+		for(var y = 0; y < rows; y++) {
+			landscape[x][y] = 1;
+		}
+	}
 }
 function draw() {
 	background(0);
@@ -38,13 +39,13 @@ function draw() {
 	
 	frameRate(60);
 	
-	translate(-w/1.3, -h);
+	translate(-w, -h+450, w);
 
-	for(var y = 0; y<rows-1; y++) {
+	for(var y = 0; y< rows-1; y++) {
 	beginShape(TRIANGLE_STRIP);
 		for(var x = 0; x<cols; x++) {
-			vertex(x*scalar, y*scalar, random(-10,10));
-			vertex(x*scalar, (y+1)*scalar, random(-10,10));
+			vertex(x*scalar, y*scalar, landscape[x][y]);
+			vertex(x*scalar, (y+1)*scalar, landscape[x][y+1]);
 		}
 	endShape();
 	}

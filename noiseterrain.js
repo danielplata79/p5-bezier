@@ -8,9 +8,11 @@
 var cols,rows;
 var scalar = 20;
 var w,h;
+var xoff,yoff;
+var go = 0;
 
 w = 600;
-h = 500;
+h = 700;
 
 //float[][] terrain;
 var landscape = [];
@@ -19,16 +21,33 @@ function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	
 	cols = (w/1)/scalar;
-	rows = (h/1.3)/scalar;
+	rows = (h/1)/scalar;
 	
+	xoff = 0;
 	for(var x = 0; x < cols; x++) {
 		landscape[x] = [];
+		yoff = 0;
 		for(var y = 0; y < rows; y++) {
-			landscape[x][y] = 1;
+			landscape[x][y] = map(noise(xoff,yoff),0,1,-150,150);
+			yoff += 0.1;
 		}
+		xoff += 0.1;
 	}
 }
 function draw() {
+	go += 0.01;
+
+	xoff = go;
+	for(var x = 0; x < cols; x++) {
+		landscape[x] = [];
+		yoff = 0;
+		for(var y = 0; y < rows; y++) {
+			landscape[x][y] = map(noise(xoff,yoff),0,1,-150,150);
+			yoff += 0.1;
+		}
+		xoff += 0.1;
+	}
+
 	background(0);
 	orbitControl();
 	stroke(255);
@@ -39,7 +58,7 @@ function draw() {
 	
 	frameRate(60);
 	
-	translate(-w, -h+450, w);
+	translate(-w, -h+450, w/1.2);
 
 	for(var y = 0; y< rows-1; y++) {
 	beginShape(TRIANGLE_STRIP);

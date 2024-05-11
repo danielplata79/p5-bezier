@@ -1,4 +1,4 @@
-<center><h1>P5JS - PROCESSING LIBRARY 〽</h1></center>
+<center><h1>P5.JS - PROCESSING LIBRARY 〽</h1></center>
 <p><b>P5.JS Library Personal Playground</b></p>
 <hr>
 <p><a href="https://p5js.org/es/">P5.JS</a> is a JavaScript library for creative coding, with a focus on making coding accessible and inclusive for artists, designers, educators, beginners, and anyone else! p5.js is free and open-source because we believe software, and the tools to learn it, should be accessible to everyone.

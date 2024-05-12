@@ -3,8 +3,7 @@
 // Buen viaje.
 //
 // Re-creado por Daniel Plata
-// Con ayuda de The Code Train
-
+// PC Version
 var cols,rows;
 var scalar = 20;
 var w,h;
@@ -12,12 +11,12 @@ var xoff,yoff;
 var go = 0;
 
 w = 600;
-h = 700;
+h = 500;
 
 var landscape = [];
 
 function setup() {
-	createCanvas(windowWidth, windowHeight, WEBGL);
+	createCanvas(800, 800, WEBGL);
 	
 	cols = w/scalar;
 	rows = h/scalar;
@@ -27,19 +26,19 @@ function setup() {
 		landscape[x] = [];
 		yoff = 0;
 		for(var y = 0; y < rows; y++) {
-			landscape[x][y] = map(noise(xoff,yoff),0,1,-150,150);
-			yoff += 0.1;
+			landscape[x][y] = map(noise(xoff,yoff),0,1,-10,10);
+			yoff += 0.09;
 		}
-		xoff += 0.1;
+		xoff += 0.001;
 	}
 }
 function draw() {
-	go += 0.01;
+	go -= 0.09;
 
-	xoff = go;
+	xoff = 0;
 	for(var x = 0; x < cols; x++) {
 		landscape[x] = [];
-		yoff = 0;
+		yoff = go;
 		for(var y = 0; y < rows; y++) {
 			landscape[x][y] = map(noise(xoff,yoff),0,1,-150,150);
 			yoff += 0.1;
@@ -47,8 +46,8 @@ function draw() {
 		xoff += 0.1;
 	}
 
-	background(0);
-	orbitControl();
+	background("#24242a");
+	//orbitControl();
 	stroke(255);
 	noFill();
 	
@@ -57,9 +56,11 @@ function draw() {
 	
 	frameRate(60);
 	
-	translate(-w, -h+450, w/1.2);
+	translate(-w-100, -h+500, w);
 
 	for(var y = 0; y< rows-1; y++) {
+    //fill(0,100,255,random(90,50));
+    //noStroke()
 	beginShape(TRIANGLE_STRIP);
 		for(var x = 0; x<cols; x++) {
 			vertex(x*scalar, y*scalar, landscape[x][y]);

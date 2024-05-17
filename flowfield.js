@@ -8,7 +8,7 @@ var particles =[num];
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	noStroke();
+	noStroke()
 	background(0);
 	
 	for(let x = 0; x < num ; x++) {

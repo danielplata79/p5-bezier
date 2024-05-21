@@ -10,9 +10,15 @@ function draw() {
     rotateX(60);
 
     noFill();
-    stroke(255);
+    //stroke(255, 0,0);
 
-    for(var i = 0; i < 20; i++) {
+    for(var i = 0; i < 40; i++) {
+        var r = map(sin(frameCount/ 2), -1, 1, 100, 200);
+        var g = map(i, 0, 20, 100, 200);
+        var b = map(cos(frameCount), -i, 1, 200, 100);
+
+        stroke(r,g,b);
+
         beginShape();
         for(var j = 0; j < 360; j+= 10) {
             var rad = i * 8;

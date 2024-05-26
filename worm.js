@@ -12,7 +12,10 @@ function draw() {
 
     rotate(60);
 
-    stroke(255);
+    var r = map(cos(frameCount/2), -1,1, 100, 200);
+    var g = map(sin(frameCount/2), 0,1,100,200);
+    var b = map(cos(frameCount/2), 0,1,100,200);
+    stroke(r,g,b);
     noFill();
 
     for(var i = 0; i < 20; i++) {
